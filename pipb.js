@@ -164,6 +164,10 @@ CandleDevice.discoverAll(function(device) {
             setCandleMode(255,0,0,0,19,0);
         }
 
+        device.getBatteryLevel(function(error,data) {
+          batLevel =   parseInt(bytesToHex(data),16);
+            console.log("batLevel = "+batLevel);
+        })
 
 
     });//connectAndSetUp
