@@ -10,15 +10,15 @@
 * This porgram controls a playbulb ble using a Pi or a PC/MAC with BT.
 *
 ************************************************************************
-* Syntax: 
-* node pipb.js playbulb mac blue 
-* node pipb.js playbulb mac blue candle
+* Syntax:
+* node pipb.js playbulb mac blue
+* node pipb.js playbulb mac blue flash
 *
-* 
+
 */
 
-var NobleDevice = require('../lib/noble-device');
-NobleDevice.Util = require('../lib/util');
+var NobleDevice = require('./lib/noble-device');
+NobleDevice.Util = require('./lib/util');
 
 var idOrLocalName = process.argv[2];
 var setcolor = process.argv[3];
@@ -26,7 +26,7 @@ var setmode = process.argv[4];
 var setname = process.argv[5];
 
 if (!idOrLocalName) {
-  console.log("node program.js [BLE ID or local name or ??? to list ble devices]");
+  console.log("node program.js [BLE ID or local name]");
   process.exit(1);
 }
 
@@ -95,7 +95,7 @@ var cmode;
  * Discover BLE devices
  ************************************************************************/
 
-CandleDevice.discover(function(device) {
+CandleDevice.discoverAll(function(device) {
   console.log('discovered: ' + device);
 
   device.on('disconnect', function() {
@@ -118,17 +118,19 @@ CandleDevice.discover(function(device) {
       batLevel = bytesToHex(data);
     })
 
-    setCandleOn();
-  console.log("setcolor = "+setcolor);
-
+  //  setCandleOn();
+  //console.log("setcolor = "+setcolor);
+  console.log("setmode = "+setmode);
+      if (setmode  == null)
+      {
         if (setcolor === "red")
             setCandleRed();
 
         if (setcolor === "blue")
             setCandleColor(0,0,255);
 
-            if (setcolor === "green")
-                setCandleColor(0,255,0);
+        if (setcolor === "green")
+            setCandleColor(0,255,0);
 
         if (setcolor === "off")
             setCandleColor(0,0,0);
@@ -136,20 +138,30 @@ CandleDevice.discover(function(device) {
         if (setcolor === "on")
           setCandleColor(255,255,255);
 
-        if (setmode  == "candle")
+        }else if (setmode  == "candle")
         {
           setModeCandleLight();
         }
-        if (setmode  == "rainbow")
+        else if (setmode  == "rainbow")
         {
-          setCandleMode(255,0,255,02,95,0);
+                 if (setcolor === "blue"){
+                    setCandleMode(0,0,255,02,95,0);
+                  }else {
+                    //yellow
+                    setCandleMode(255,0,255,02,95,0);
+                  }
         }
 
 
         //00 7e ff 00 00 00 19 00"
-        if (setmode  == "flash")
+        else if (setmode  == "flash")
         {
-          setCandleMode(0,0,255,0,19,0);
+         if (setcolor === "blue")
+            setCandleMode(0,0,255,0,19,0);
+         if (setcolor === "green")
+            setCandleMode(0,255,0,0,19,0);
+         if (setcolor === "red")
+            setCandleMode(255,0,0,0,19,0);
         }
 
 
@@ -175,7 +187,7 @@ function setCandleMode (r,g,b,mode,speed1,speed2){
 // mode =01 = Fade, 02 = Jump RBG (rainbow), 03 = Fade RGB (rainbow), 04 = Candle Effect
 //new Buffer([0, r, g, b, effect, 0, speedBytes[0], speedBytes[1]]);
   device.write('ff02','fffb',new Buffer([0, r, g, b, mode,0,speed1,speed2]),function() {
-     console.log("modes:01 = Fade, 02 = Jump RBG (rainbow), 03 = Fade RGB (rainbow), 04 = Candle Effect");
+     console.log("modes:00 flash , 01 = Fade, 02 = Jump RBG (rainbow), 03 = Fade RGB (rainbow), 04 = Candle Effect");
      console.log('Writing effect data:'+mode);
      readCandleMode(true);
    });
