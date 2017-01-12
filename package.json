@@ -1,0 +1,40 @@
+{
+  "name": "mvk-playbulb",
+  "version": "1.0.1",
+  "description": "This is a node.js which demostrate how to connect to a PlayBulb",
+  "main": "pipb.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markusvankempen/playbulb.git"
+  },
+  "dependencies": {
+    "axios": "^0.5.4",
+    "bluebird": "^2.9.34",
+    "btoa": "^1.1.2",
+    "events": "^1.0.2",
+    "format": "^0.2.1",
+    "loglevel": "1.4.0",
+    "mqtt": "1.5.0",
+    "noble": "^1.7.0",
+    "noble-device": "^1.4.0",
+    "watson-developer-cloud": "^2.0.0"
+  },
+  "keywords": [
+    "playbulb",
+    "iot",
+    "pi",
+    "ble",
+    "wiot",
+    "watson",
+    "stt"
+  ],
+  "author": "Markus van Kempen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/markusvankempen/playbulb/issues"
+  },
+  "homepage": "https://github.com/markusvankempen/playbulb#readme"
+}
