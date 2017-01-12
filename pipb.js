@@ -18,7 +18,7 @@ var setmode = process.argv[4];
 var setname = process.argv[5];
 
 if (!idOrLocalName) {
-  console.log("node program.js [BLE ID or local name]");
+  console.log("node program.js [BLE ID or local name or ??? to list ble devices]");
   process.exit(1);
 }
 
