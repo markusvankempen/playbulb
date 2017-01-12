@@ -4,9 +4,17 @@
 *
 * mvk@ca.ibm.com
 * adjustemts for Connect2017 Workshop - Part 1
+* date: 2017-01-11
 ************************************************************************
 *
-* This porgram controls a playbulb ble using a Pi
+* This porgram controls a playbulb ble using a Pi or a PC/MAC with BT.
+*
+************************************************************************
+* Syntax: 
+* node pipb.js playbulb mac blue 
+* node pipb.js playbulb mac blue candle
+*
+* 
 */
 
 var NobleDevice = require('../lib/noble-device');
