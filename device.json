@@ -1,0 +1,8 @@
+{
+  "org": "YOURORG",
+  "domain": "internetofthings.ibmcloud.com",
+  "type": "raspi",
+  "id": "candlepi",
+  "auth-method" : "token",
+  "auth-token" : "YOURTOKEN"
+}
