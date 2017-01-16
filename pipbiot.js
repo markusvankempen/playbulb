@@ -3,13 +3,12 @@
 ************************************************************************
 *
 * mvk@ca.ibm.com
-* adjustemts for Connect2017 Workshop
+* adjustemts for Connect2017 Workshop -  part2
 ************************************************************************
 *
 * This porgram controls a playbulb via watson speech to text api and
-* mqt using bluemix and watson iot platform
+* mqqt using bluemix and watson iot platform
 */
-var attentionWord = "Watson";
 
   var iotf = require("./iotf/iotf-client");
   var config = require("./device.json");
@@ -144,7 +143,7 @@ CandleDevice.discover(function(device) {
           mqttClient.publish('ping', 'json', '{"value":'+i+',"mode":"'+cmode+'","batLevel":"'+batLevel+'","candleColor":"'+candleColor+'","candleRR":"'+rr+'","candleGG":"'+gg+'","candleBB":"'+bb+'","candleID":"'+device.id+'","candleName":"'+candleName+   '"} ', 2);
           //  setCandleColor(0,0,i);
           //Text    mqttClient.publish('stt', 'json', '{"text":"Set candle to blue"}');
-        },10000);
+        },5000);
 
         //setCandleBlue();
     });
