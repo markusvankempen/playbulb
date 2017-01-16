@@ -1,4 +1,4 @@
-# Playbulb Candle and watson IoT platform
+# Playbulb Candle and Watson IoT platform
 Controling a PlayBulbCandle using a PI, Watson IoT Platform, Weather API, Twitter
 ## IBM Developer Recipe
 https://developer.ibm.com/recipes/tutorials/playbulb-candle-watson-iot-platform-using-watson-apis-and-twitter/
