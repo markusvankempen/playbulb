@@ -20,7 +20,8 @@
     "mqtt": "1.5.0",
     "noble": "^1.7.0",
     "noble-device": "^1.4.0",
-    "watson-developer-cloud": "^2.0.0"
+    "watson-developer-cloud": "^2.0.0",
+    "socketio":"*"
   },
   "keywords": [
     "playbulb",
