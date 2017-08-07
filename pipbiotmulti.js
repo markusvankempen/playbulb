@@ -3,7 +3,9 @@
 ************************************************************************
 *
 * mvk@ca.ibm.com
-* adjustemts for Connect2017 Workshop
+* 20170804 - added multi connect function
+*          - added the remote console on port 88
+*          - added ipaddress
 ************************************************************************
 *
 * This porgram control multiple playbulb via
@@ -17,11 +19,13 @@
 * pipb plaublubg uuid a2 a3 NewName or use the function
 * device.write('ff02', 'ffff',new Buffer(setname), function() {});
 *
+*************************************************************************
+*
 */
 const http = require('http');
 
-const hostname = '0.0.0.0';
-const port = 80;
+const hostname = '127.0.0.1';
+const port = 88;
 
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
