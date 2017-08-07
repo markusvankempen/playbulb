@@ -1,0 +1,8 @@
+{
+  "org": "xxxxx",
+  "domain": "internetofthings.ibmcloud.com",
+  "type": "playbulb",
+  "id": "playbulb01",
+  "auth-method" : "token",
+  "auth-token" : "playbulb01"
+}
