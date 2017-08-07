@@ -162,7 +162,14 @@ CandleDevice.discoverAll(function(device) {
             setCandleMode(0,255,0,0,19,0);
          if (setcolor === "red")
             setCandleMode(255,0,0,0,19,0);
+         }else if (setmode = "name")
+        {
+            console.log("WriteNewName ="+setname);
+            device.write('ff02', 'ffff',new Buffer(setname), function() {
+          //  console.log("WriteNewName ="+setname+mycounter);
+            });
         }
+
 
         device.getBatteryLevel(function(error,data) {
           batLevel =   parseInt(bytesToHex(data),16);
