@@ -4,6 +4,7 @@
 *
 * mvk@ca.ibm.com
 * adjustemts for Connect2017 Workshop -  part2
+* add reset before changing color -20170807
 ************************************************************************
 *
 * This porgram controls a playbulb via watson speech to text api and
@@ -165,7 +166,7 @@ CandleDevice.discover(function(device) {
     if(commandName === "setModeCandleLight") {
         setModeCandleLight();
       }else if(commandName === "setCandleMode") {
-            setCandleMode(myjson.rr,myjson.gg,myjson.bb,myjson.mode,myjson.speed1,myjson.speed1);
+            setCandleMode(myjson.rr,myjson.gg,myjson.bb,myjson.mode,myjson.speed1,myjson.speed2);
       }else if(commandName === "setColorBlue") {
             setCandleBlue();
         } else if(commandName === "setColor") {
@@ -221,6 +222,7 @@ function setCandleBlue()
 
 function setCandleColor(r,g,b)
   {
+    setCandleMode(0,0,0,0,0,0); //reset to avoid flicker
 // read and write color
      device.read('ff02','fffc', function(error,data1) {
       console.log('ColorCode       = xxRRGGBB');
