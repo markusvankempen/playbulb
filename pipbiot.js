@@ -9,6 +9,13 @@
 *
 * This porgram controls a playbulb via watson speech to text api and
 * mqqt using bluemix and watson iot platform
+
+*Note: There the instructions to make enable the script as a service
+* so that is starts automaticaly whent he pi boots up
+*
+*https://www.axllent.org/docs/view/nodejs-service-with-systemd/#user-comments
+*
+************************************************************************
 */
 
   var iotf = require("./iotf/iotf-client");
