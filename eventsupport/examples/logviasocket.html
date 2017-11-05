@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+  <head>
+      <style>
+      div.scroll {
+    background-color: #000000;
+    color: #FFFF00;
+    width: 1024px;
+    height: 768px;
+    overflow: scroll;
+}
+
+</style>
+        <script src='/socket.io/socket.io.js'></script>
+        <script>
+            var socket = io();
+            var gdata = "";
+
+            socket.on('welcome', function(data) {
+                addMessage(data.message);
+
+
+                var buttons = document.getElementById('buttons');
+                var btn = document.createElement("BUTTON");
+                btn.textContent = "Reboot";
+                btn.onclick = function () {
+                    socket.emit('receiveClerance', "La clerance " + gdata + " est recu");
+                }
+                buttons.appendChild(btn);
+
+            });
+
+            socket.on('clearance', function (data) {
+                addMessage(data.time + data);
+                gdata = data;
+            });
+
+            socket.on('message', function (data) {
+            //console.log(data);
+            addMessage(data.time + " - "+data.text);
+            });
+
+            function addMessage(message) {
+                var text = document.createTextNode(message),
+                    el = document.createElement('li'),
+                    hmessages = document.getElementById('messages');
+
+                el.appendChild(text);
+                hmessages.appendChild(el);
+
+            }
+        </script>
+    </head>
+    <body>
+          <ul id='buttons'></ul>
+  <div class="scroll" id='messages'></div>
+    </body>
+</html>
